@@ -3,9 +3,9 @@ import cors from "cors";
 
 import mongoose from "mongoose";
 import dotenv from "dotenv";
-import pastaRoutes from "../pastas/pastas.route.js";
-import orderRoutes from "../orders/orders.route.js";
-import { errorHandler } from "../utils/errorHandler.js";
+import pastaRoutes from "./src/pastas/pastas.route.js";
+import orderRoutes from "./src/orders/orders.route.js";
+import { errorHandler } from "./src/utils/errorHandler.js";
 
 dotenv.config();
 
