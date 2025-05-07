@@ -11,7 +11,22 @@ dotenv.config();
 
 const app = express();
 app.use(express.json());
-app.use(cors());
+const allowedOrigins = [
+   "https://fratelli-front.vercel.app",
+   "http://localhost:3000"  
+  ];
+  
+  app.use(cors({
+    origin: function (origin, callback) {
+      if (allowedOrigins.includes(origin)) {
+        return callback(null, true);
+      } else {
+        return callback(new Error('Not allowed by CORS'));
+      }
+    },
+    credentials: true
+  }));
+  
 
 app.use(errorHandler);
 
@@ -22,4 +37,10 @@ app.use("/api/orders", orderRoutes);
 //   console.log("MongoDB conectado");
 // });
 
-app.listen(3003, () => console.log("Servidor en puerto 3000"));
+const PORT = process.env.PORT || 3000;
+if (process.env.NODE_ENV !== 'production') {
+  app.listen(PORT, () => {
+    console.log(`Servidor corriendo en puerto ${PORT}`);
+  });
+}
+export default app; 
