@@ -23,8 +23,7 @@ const allowedOrigins = [
       } else {
         return callback(new Error('Not allowed by CORS'));
       }
-    },
-    credentials: true
+    }
   }));
   
 
@@ -37,7 +36,7 @@ app.use("/api/orders", orderRoutes);
 //   console.log("MongoDB conectado");
 // });
 
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 3003;
 if (process.env.NODE_ENV !== 'production') {
   app.listen(PORT, () => {
     console.log(`Servidor corriendo en puerto ${PORT}`);
